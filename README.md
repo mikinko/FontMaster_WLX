@@ -1,4 +1,4 @@
-# FontMaster
+# FontMaster WLX viewer plugin
 
 ![FontMaster Total Commander plugin banner](assets/readme-banners/fontmaster-dark.png)
 
@@ -67,6 +67,6 @@ FontMaster includes a dark theme for users who prefer a lower-contrast interface
 
 ## First release
 
-This is the first public release of FontMaster.
+This is the first public release of FontMaster. enjoy
 
-The focus is straightforward: open a font file, inspect it clearly, and keep the experience fast, modern, and easy to use.
+
