@@ -11,6 +11,7 @@ It is designed to make font browsing quick, clear, and convenient directly insid
 FontMaster gives you a focused preview of a font file, with the key details you usually want to check at a glance:
 
 - A large specimen preview for fast visual inspection
+- Supporting multi-face font preview
 - A character view for exploring the available glyphs
 - Font metadata for family, style, and file information and complete Advanced view
 - Installed font browsing for system-wide comparison
