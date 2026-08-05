@@ -12,10 +12,11 @@ FontMaster gives you a focused preview of a font file, with the key details you 
 
 - A large specimen preview for fast visual inspection
 - A character view for exploring the available glyphs
-- Font metadata for family, style, and file information
+- Font metadata for family, style, and file information and complete Advanced view
 - Installed font browsing for system-wide comparison
-- Simple settings for preview text, size, and theme
-- A clean About page with product information
+- Simple settings for preview text, size
+- Theme  support for both Light and Dark mode
+- A x86 32bit version supporting older Windows versions
 
 ## Supported font types
 
