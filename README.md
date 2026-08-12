@@ -4,6 +4,11 @@
 
 **FontMaster** is a modern Total Commander Lister plugin that brings font previewing directly into your file manager. Instead of opening a separate font viewer application, you can now preview fonts instantly as you browse your files - fast, clean, and built right into the workflow.
 
+## New in version 1.5
+- Glyph Inspector (double-click on glyphs)
+- Pangram automatic variations to different sets, both for font, and installed fonts
+- Coverage shows what writing systems this font supports
+
 ## What You Get
 
 FontMaster is designed around one core idea: make font browsing a natural part of file management. Whether you're organizing design assets, exploring a font collection, or just checking if a font matches your needs, everything you want to know is right there without leaving Total Commander.
