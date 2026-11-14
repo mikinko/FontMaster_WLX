@@ -4,7 +4,30 @@
 
 **FontMaster** is a modern Total Commander Lister plugin that brings font previewing directly into your file manager. Instead of opening a separate font viewer application, you can now preview fonts instantly as you browse your files - fast, clean, and built right into the workflow.
 
-## New in version 1.8
+## New in version 1.9
+- **FontMaster.exe - use it without Total Commander.** One file, nothing to install: run `FontMaster.exe font.ttf`, pick it in Explorer's *Open with*, or start it and choose a font. Drop another font on the window to switch, `Ctrl+O` opens one, `Esc` closes. All themes are built in (`FontMaster-x86.exe` for 32-bit Windows)
+- **Colour emoji fonts** - gradient emoji fonts (COLR v1, e.g. Noto Color Emoji) now render, with emoji character-set chips, a Coverage row and a sample line
+- **Bitmap emoji fonts** (CBDT / sbix) render at any size, and **OpenType-SVG** fonts whose glyphs are pictures show their colour artwork
+- **Variable fonts on the Specimen tab** - named-instance chips (Light, Bold, Condensed...) and axis sliders sit right above the samples, with a reset chip
+- **Export a glyph** - right-click any character: *Export outline as SVG file...* or *Export as PNG file...* (PNG keeps colour and transparency, so it works for emoji too). The save dialog remembers its folder, or set a fixed one with `ExportDir` in `FontMaster.ini`
+- **More copy formats** - character, `U+XXXX`, Unicode name, glyph name, glyph ID, HTML entity, CSS escape, UTF-8 bytes, SVG outline, PNG image and a ready `@font-face` rule
+- **Unicode character names** in the Characters detail panel
+- **Glyph IDs view** - the last chip on the Characters tab lists every glyph in the font, including ligatures and alternates that have no character of their own
+- **OpenType features and font checks** - Metadata > Advanced lists the font's GSUB/GPOS features (with stylistic-set names) and flags common problems such as mismatched line-spacing metrics or a wrong monospace flag
+- **File position** - the strip shows the file name and `12 / 340` next to the `‹ ›` buttons
+- **Glyph inspector** - `←` / `→` step to the neighbouring glyph, `Esc` goes back to the grid instead of closing Lister, and colour/emoji glyphs are shown
+- **Faster with huge fonts** - big CJK and emoji fonts draw in steps instead of freezing the window, even at 4K
+- **Settings tab scrolls** - every option is reachable in a short pane
+- **Version in the file properties** of `FontMaster.wlx64` / `.wlx`
+
+**Fixes**
+- OpenType-SVG fonts with vector glyphs showed nothing; they now show their outlines
+- Smooth-scrolling mice and touchpads did not scroll at all
+- The Characters grid puts glyphs on a common baseline - comma and apostrophe no longer look the same
+- Install / Uninstall on the second face of a `.ttc` collection
+- Wrapped specimen lines no longer run past the right edge
+
+### Previously, in 1.8
 - **Uninstall, activate, show in Explorer** - the Install button is now a menu: install for your user, *activate until reboot* without installing, uninstall fonts you installed, or jump to the installed file. Right-click on the Installed tab does the same for system fonts
 - **Filter on the Installed tab** - type part of a name instead of scrolling through hundreds of families
 - **Go to a character** - type `U+20AC`, `20AC` or just `€` in the Characters tab and it jumps there
@@ -48,7 +71,8 @@ FontMaster is designed around one core idea: make font browsing a natural part o
 - **Font Metadata**: All the details in one place - family name, style, version, licensing, and technical information
 - **System Font Browser**: Check what fonts are already installed on your system and compare them side by side
 - **Themes**: Choose from Light, Dark, or several carefully-selected popular themes (GitHub Light, Catppuccin, Monokai, and more)
-- **Variable Font Support**: Adjust variable font axes in real-time to see how weight, width, and other parameters change the look
+- **Variable Font Support**: Pick a named instance or drag the axes right on the Specimen tab to see how weight, width, and other parameters change the look
+- **Glyph Export**: Save any glyph as an SVG outline or a PNG image, or copy it in a dozen formats
 - **Per-User Installation**: Install, uninstall or temporarily activate fonts for your user account directly from the plugin - no administrator access needed
 
 ### Supported Font Formats
@@ -86,7 +110,9 @@ Browse every single character in the font through an organized grid. You can nav
 
 ![Glyph inspector](scrshots/characters-glyph-monokai.png)
 
-For designers and font developers, the glyph inspector shows the precise outlines of individual characters. You get a pixel-perfect view of the shape, metrics, and construction of each glyph - useful when you're evaluating font quality or need to understand how a particular character is designed.
+For designers and font developers, the glyph inspector shows the precise outlines of individual characters. You get a pixel-perfect view of the shape, metrics, and construction of each glyph - useful when you're evaluating font quality or need to understand how a particular character is designed. Use `←` / `→` to step through the glyphs and `Esc` (or Backspace) to go back to the grid.
+
+Right-click a glyph - in the grid or in the inspector - to copy it in many formats or to **export it as an SVG or PNG file**. The save dialog opens in the folder you last exported to; to always start in one folder, set `ExportDir` in `FontMaster.ini`.
 
 ### Coverage View
 
@@ -110,7 +136,7 @@ Want to see how this font compares to what you already have? The Installed tab l
 
 ![Settings](scrshots/settings-monokai.png)
 
-The Settings tab keeps everything flexible. Write your own custom specimen text (useful if you're testing how a font looks with your specific words), set your own waterfall text and sizes, pick your theme and which themes Auto uses in light and dark mode, choose whether Page Up/Down switch fonts, and drag the axes of a variable font. The preview size itself lives on the slider in the tab strip (or Ctrl + mouse wheel, Ctrl + +/-).
+The Settings tab keeps everything flexible. Write your own custom specimen text (useful if you're testing how a font looks with your specific words), set your own waterfall text and sizes, pick your theme and which themes Auto uses in light and dark mode, and choose whether Page Up/Down switch fonts. Variable-font axes live on the Specimen tab. The preview size itself lives on the slider in the tab strip (or Ctrl + mouse wheel, Ctrl + +/-).
 
 Everything is also stored in `FontMaster.ini` (next to the plugin, or in `%APPDATA%\FontMaster\` when that folder is read-only). The file lists every option with a one-line explanation, so it can be edited by hand; changes apply to the next Lister window you open.
 
@@ -203,7 +229,7 @@ The same feature works on the **Installed Fonts** tab - when you're browsing sys
 
 **Prefer PageUp/PageDown for changing font?** Settings has a *Navigation keys* checkbox: **Page Up / Page Down switch to the previous / next font**. With it on they walk the folder instead of scrolling. The **Characters** tab is the one exception — there they keep paging the glyph grid, because nothing else can, and the `‹ ›` buttons still work on every tab.
 
-On the **Characters** tab the keys do a bit more: the arrow keys move the selection around the glyph grid instead of scrolling, `PageUp`/`PageDown` page through the grid, `Enter` opens the glyph inspector on the selected character, and `Backspace` closes it again. `Ctrl+Q` steps through the character-set chips (`Ctrl+Shift+Q` goes back), which saves a trip to the mouse when the font has a lot of blocks.
+On the **Characters** tab the keys do a bit more: the arrow keys move the selection around the glyph grid instead of scrolling, `PageUp`/`PageDown` page through the grid, `Enter` opens the glyph inspector on the selected character, `←` / `→` step through glyphs inside it, and `Esc` or `Backspace` closes it again. `Ctrl+Q` steps through the character-set chips (`Ctrl+Shift+Q` goes back), which saves a trip to the mouse when the font has a lot of blocks.
 
 ---
 
@@ -215,7 +241,7 @@ FontMaster uses **FreeType** for rendering fonts and **DirectWrite** for accessi
 
 ## Version Info
 
-This is FontMaster v1.8. Built with modern C++ and optimized for Windows 10+, with backward compatibility for Windows 8.1 and older systems (32-bit version).
+This is FontMaster v1.9. Built with modern C++ and optimized for Windows 10+, with backward compatibility for Windows 8.1 and older systems (32-bit version).
 
 Enjoy exploring your fonts! 🎨
 
