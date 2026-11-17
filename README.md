@@ -5,6 +5,10 @@
 **FontMaster** is a modern Total Commander Lister plugin that brings font previewing directly into your file manager. Instead of opening a separate font viewer application, you can now preview fonts instantly as you browse your files - fast, clean, and built right into the workflow.
 
 ## New in version 1.9
+- **See what is missing.** On the Coverage tab, click a script that is not complete (▸) to list every missing character with its code — "Currency symbols 1/22" now tells you which 21. Thai and other range-scored scripts count only real characters (Thai needs 74, not 78). Optional in Settings → Characters: with a block chip selected, the characters of that block the font lacks appear as greyed cells with their code.
+- **Complex scripts render correctly.** Arabic, Persian, Urdu and other Arabic-script text joins and runs right to left; Hebrew reads right to left; Devanagari, Bengali, Tamil and other Indic scripts form their conjuncts; Thai and Lao break lines between words; emoji sequences (families, flags, skin tones) show as one emoji. Right-to-left samples are right-aligned. Uses Windows' own DirectWrite shaper, so nothing extra ships; Latin, Cyrillic, Greek and CJK render exactly as before.
+
+## New in version 1.9
 - **FontMaster.exe - use it without Total Commander.** One file, nothing to install: run `FontMaster.exe font.ttf`, pick it in Explorer's *Open with*, or start it and choose a font. Drop another font on the window to switch, `Ctrl+O` opens one, `Esc` closes. All themes are built in (`FontMaster-x86.exe` for 32-bit Windows)
 - **Colour emoji fonts** - gradient emoji fonts (COLR v1, e.g. Noto Color Emoji) now render, with emoji character-set chips, a Coverage row and a sample line
 - **Bitmap emoji fonts** (CBDT / sbix) render at any size, and **OpenType-SVG** fonts whose glyphs are pictures show their colour artwork
